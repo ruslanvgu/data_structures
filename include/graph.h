@@ -3,8 +3,9 @@
 #include <unordered_map>
 #include <vector>
 #include <iostream>
-
-class Node
+#include <stack>
+#include <algorithm>
+/*class Node
 {
     size_t num_;
     int direction_;
@@ -13,24 +14,23 @@ public:
     Node(size_t num, int direction):num_(num),direction_(direction){}
     size_t vertix(){return num_;}
     int direction(){return direction_;}
-};
+};*/
 
-using graph = std::unordered_map<size_t, std::vector<Node>>;
 
 
 class Graph
 {
+    using graph = std::unordered_map<size_t, std::vector<int>>;
     graph graph_;
+    void dfs_recursion_(size_t startVertix, std::vector<int> &visitedVertixs, std::vector<int> &result);
 public:
-    Graph(){}
-    Graph(size_t vertix, std::initializer_list<int> list ){
-        std::cout << vertix << " ";
-        for(auto v : list)
-        {
-            std::cout << v <<" " ;
-        }
-        std::cout << std::endl;
-    }
+    Graph():graph_(){}
+    void addNode(size_t vertix, std::initializer_list<int> list );
+    size_t vertixes();
+    void print();
+    std::vector<int> dfs_recursion(size_t startVertix);
+    std::vector<int> dfs_iterations(size_t startVertix);
+    void bfs();
 
 };
 
