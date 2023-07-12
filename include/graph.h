@@ -4,6 +4,7 @@
 #include <vector>
 #include <iostream>
 #include <stack>
+#include <queue>
 #include <algorithm>
 /*class Node
 {
@@ -22,15 +23,17 @@ class Graph
 {
     using graph = std::unordered_map<size_t, std::vector<int>>;
     graph graph_;
-    void dfs_recursion_(size_t startVertix, std::vector<int> &visitedVertixs, std::vector<int> &result);
+    void dfs_recursion_(size_t startNode, std::vector<int> &visitedVertixs, std::vector<int> &result);
 public:
     Graph():graph_(){}
-    void addNode(size_t vertix, std::initializer_list<int> list );
+    void addNodes(size_t vertix, std::initializer_list<int> list );
     size_t vertixes();
     void print();
-    std::vector<int> dfs_recursion(size_t startVertix);
-    std::vector<int> dfs_iterations(size_t startVertix);
-    void bfs();
+    std::vector<int> dfs_recursion(size_t startNode);
+    std::vector<int> dfs_iterations(size_t startNode);
+    std::vector<int> bfs(size_t startNode);
+    std::vector<std::vector<size_t>> ways(size_t startNode, size_t endNode);
+    std::vector<int> shortestPath(int src, int dest);
 
 };
 
